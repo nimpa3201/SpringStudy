@@ -7,7 +7,8 @@ import com.example.core.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
         //new Member(1L,"memberA", Grade.VIP); Member에 command+option+v 단축키 이용하면 아래와 같이 됨
         Member memberA = new Member(1L, "memberA", Grade.VIP);
         memberService.join(memberA);
