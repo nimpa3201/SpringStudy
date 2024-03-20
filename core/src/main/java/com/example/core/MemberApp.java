@@ -3,7 +3,6 @@ package com.example.core;
 import com.example.core.member.Grade;
 import com.example.core.member.Member;
 import com.example.core.member.MemberService;
-import com.example.core.member.MemberServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,7 +11,7 @@ public class MemberApp {
 //        AppConfig appConfig = new AppConfig();
 //        MemberService memberService = appConfig.memberService();
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        // 위 코드는 AppConfig 클래스에 정의된 설정 정보를 사용하여 스프링 ApplicationContext를 생성한다.
+        // 위 코드는 AppConfig 클래스에 정의된 설정 정보를 사용하여 스프링 ApplicationContext(스프링 컨테이너)를 생성한다.
         // 이는 ApplicationContext가 AppConfig에 정의된 객체(빈)들을 생성하고 관리하도록 하는 것을 의미한다.
         // AppConfig 클래스에는 빈 정의 같은 설정이 포함되어 있다.
 
