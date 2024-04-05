@@ -1,2 +1,4 @@
-package com.example.core.scan.filter;public class BeanB {
+package com.example.core.scan.filter;
+@MyExcludeComponent
+public class BeanB {
 }
