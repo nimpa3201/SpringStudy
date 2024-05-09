@@ -20,7 +20,7 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig{
-        @Bean
+        @Bean(initMethod = "init",destroyMethod = "close") //메서드 지정
         public NetworkClient networkClient(){
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://meenoi-spring.dev");
