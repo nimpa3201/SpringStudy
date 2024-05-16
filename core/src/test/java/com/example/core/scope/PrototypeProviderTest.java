@@ -2,11 +2,13 @@ package com.example.core.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,16 +29,16 @@ public class PrototypeProviderTest {
 
     static class ClientBean{
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeansProvider;
+        private Provider<PrototypeBean> Provider;
 
         public int logic(){
-            PrototypeBean prototypeBean = prototypeBeansProvider.getObject();
+            PrototypeBean prototypeBean =Provider.get();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
-
     }
 
+    @Component
     @Scope("prototype")
     static class PrototypeBean {
         private int count=0;
