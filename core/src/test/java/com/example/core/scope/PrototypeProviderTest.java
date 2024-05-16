@@ -37,8 +37,7 @@ public class PrototypeProviderTest {
             return prototypeBean.getCount();
         }
     }
-
-    @Component
+    
     @Scope("prototype")
     static class PrototypeBean {
         private int count=0;
