@@ -8,17 +8,25 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(18)
+	}
 }
 
 repositories {
 	mavenCentral()
 }
 
+
 dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.24'  // Lombok 의존성 추가
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.projectlombok:lombok' //롬복 추가
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.0'// web 라이브러리추가
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
