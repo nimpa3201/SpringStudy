@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class LogDemoController {
     private final LogDemoService logDemoService;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) throws InterruptedException {
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.getObject();
+        System.out.println(myLogger.getClass());
         myLogger.setRequestURL(requestURL);
 
         myLogger.log("controller test");
         //Thread.sleep(1000); 각 요청의 로그 순서 섞이지만 수행되는 거 볼 수 있음
         logDemoService.logic("testId");
-        return "새로운 로그 찍기";
+        return "OK";
     }
 }
