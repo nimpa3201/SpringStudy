@@ -68,11 +68,22 @@ public class BasicItemController {
     }
 
     // 상품 등록 처리 - V4: 단순한 객체 전달 방식
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
         return "basic/item"; // 상품 등록 후, 해당 상품의 상세 뷰로 이동
     }
+
+
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        // 새로운 아이템을 저장
+        itemRepository.save(item);
+        // 저장된 아이템의 상세 페이지로 리다이렉트
+        return "redirect:/basic/items/" + item.getId();
+    }
+
+
 
     @GetMapping("{itemId}/edit")
     public String editForm(@PathVariable Long itemId, Model model){
