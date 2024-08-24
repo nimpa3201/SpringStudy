@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>SpringEL 표현식</h1>
+
+<ul>
+  Object
+  <!-- ${user.username}
+       - 설명: 이 표현식은 `user` 객체의 `username` 필드에 직접 접근합니다.
+       - 작동 방식: `SpringEL`은 `user` 객체에서 `getUsername()` 메서드를 자동으로 호출하여 그 값을 반환합니다.
+       - 예시: 만약 `user` 객체의 `username` 필드 값이 "userA"라면, 이 표현식은 "userA"를 출력합니다.
+  -->
+  <li>${user.username} = <span th:text="${user.username}"></span></li>
+
+  <!-- ${user['username']}
+       - 설명: 이 표현식은 `user` 객체를 `Map`처럼 취급하여 `username` 키로 값을 가져오는 방식입니다.
+       - 작동 방식: `SpringEL`은 `user` 객체에 대해 `getProperty("username")` 또는 `get("username")`을 호출합니다.
+       - 예시: `user` 객체의 `username` 필드가 "userA"라면, 이 표현식도 "userA"를 출력합니다.
+  -->
+  <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+
+  <!-- ${user.getUsername()}
+       - 설명: 이 표현식은 `user` 객체의 `getUsername()` 메서드를 명시적으로 호출합니다.
+       - 작동 방식: 이 경우 `SpringEL`은 `user` 객체에서 `getUsername()` 메서드를 직접 호출하여 그 결과를 반환합니다.
+       - 예시: 마찬가지로 `user` 객체의 `username` 값이 "userA"라면, 이 표현식은 "userA"를 출력합니다.
+  -->
+  <li>${user.getUsername()} = <span th:text="${user.getUsername()}"></span></li>
+</ul>
+
+<ul>
+  List
+  <li>${users[0].username} = <span th:text="${users[0].username}"></span></li>
+  <li>${users[0]['username']} = <span th:text="${users[0]['username']}"></span></li>
+  <li>${users[0].getUsername()} = <span th:text="${users[0].getUsername()}"></span></li>
+</ul>
+
+<ul>
+  Map
+  <li>${userMap['userA'].username} = <span th:text="${userMap['userA'].username}"></span></li>
+  <li>${userMap['userA']['username']} = <span th:text="${userMap['userA']['username']}"></span></li>
+  <li>${userMap['userA'].getUsername()} = <span th:text="${userMap['userA'].getUsername()}"></span></li>
+</ul>
+
+<h1>지역 변수 - (th:with)</h1>
+<div th:with="first=${users[0]}">
+  <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p>
+</div>
+
+</body>
+</html>
