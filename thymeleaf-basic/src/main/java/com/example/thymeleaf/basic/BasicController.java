@@ -1,7 +1,7 @@
 package com.example.thymeleaf.basic;
 
 
-import jakarta.servlet.http.HttpServlet;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -84,6 +84,14 @@ public class BasicController {
         return "basic/literal";
 
     }
+
+    @GetMapping("/operation")
+    public String operation(Model model){
+        model.addAttribute("nullData",null);
+        model.addAttribute("data","spring!");
+        return "basic/operation";
+    }
+
 
 
 
