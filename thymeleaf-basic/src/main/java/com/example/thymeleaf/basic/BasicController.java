@@ -121,6 +121,15 @@ public class BasicController {
         return "basic/block";
     }
 
+    //타임리프는 자바스크립트에서 타임리프를 편리하게 사용할 수 있는 자바스크립트 인라인 기능 제공
+    @GetMapping("javascript")
+    public String javascript(Model model){
+        model.addAttribute("user",new User("userA",10));
+        addUsers(model);
+        return "basic/javascript";
+    }
+
+
 
 
     private void addUsers(Model model){
