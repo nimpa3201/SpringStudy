@@ -7,6 +7,10 @@ public enum ItemType {
     ItemType(String description) {
         this.description = description;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }
 //상품 종류는 `ENUM` 을 사용한다. 설명을 위해 `description` 필드를 추가했다.
 
