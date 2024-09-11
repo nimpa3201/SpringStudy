@@ -47,5 +47,4 @@ public class ApplicationContextBasicFindTest {
                 ()-> ac.getBean("xxxx", MemberService.class)); // 오른쪽 로직을 실행하면 , 왼쪽의 예외가 터져야 성공
     }
 
-
     }

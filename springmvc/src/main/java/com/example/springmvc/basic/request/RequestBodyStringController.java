@@ -35,6 +35,11 @@ public class RequestBodyStringController {
     }
 
     // InputStream과 Writer를 사용하여 요청 본문을 읽고 응답을 작성하는 방법
+    /**
+     * InputStream(Reader): HTTP 요청 메시지 바디의 내용을 직접 조회
+     * OutputStream(Writer): HTTP 응답 메시지의 바디에 직접 결과 출력 */
+
+
     @PostMapping("/request-body-string-v2")
     public void requestBodyStringV2(InputStream inputStream, Writer responseWriter) throws IOException {
         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8); // InputStream을 String으로 변환
@@ -60,6 +65,14 @@ public class RequestBodyStringController {
     }
 
     // @RequestBody를 사용하여 요청 본문을 읽고 @ResponseBody로 응답을 작성하는 방법
+
+    /**
+     * @RequestBody
+     * - 메시지 바디 정보를 직접 조회(@RequestParam X, @ModelAttribute X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 *
+     * @ResponseBody
+     * - 메시지 바디 정보 직접 반환(view 조회X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용 */
     @ResponseBody // 반환 값을 응답 본문으로 사용하기 위한 어노테이션
     @PostMapping("/request-body-string-v5")
     public String requestBodyStringV5(@RequestBody String messageBody) {

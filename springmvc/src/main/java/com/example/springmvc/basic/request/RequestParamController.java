@@ -43,7 +43,7 @@ public class RequestParamController {
         return "ok";
     }
 
-    // @RequestParam 어노테이션 사용시 파라미터 이름을 생략한 예제
+    // @RequestParam 어노테이션 사용시 파라미터 이름을 생략한 예제 , 변수명과 파라미터 네임이 같아야 함
     @ResponseBody
     @RequestMapping("/request-param-v3")
     public String requestParamV3(
@@ -97,7 +97,7 @@ public class RequestParamController {
     }
 
     @ResponseBody
-    @RequestMapping("/model-attribute-v1")
+    @RequestMapping("/model-attribute-v0")
     public String modelAttributeV1(@RequestParam String username,
                                   @RequestParam int age){
         HelloData helloData =new HelloData();
@@ -109,14 +109,14 @@ public class RequestParamController {
     }
 
     @ResponseBody
-    @RequestMapping("/model-attribute-v2")
+    @RequestMapping("/model-attribute-v1")
     public String modelAttributeV2(@ModelAttribute HelloData helloData){
         log.info("username = {} , age = {}", helloData.getUsername(),helloData.getAge());
         return "ok";
     }
 
     @ResponseBody
-    @RequestMapping("/model-attribute-v3")
+    @RequestMapping("/model-attribute-v2")
     public String modelAttributeV3( HelloData helloData){
         log.info("username = {} , age = {}", helloData.getUsername(),helloData.getAge());
         return "ok";

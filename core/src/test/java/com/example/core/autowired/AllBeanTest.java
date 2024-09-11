@@ -29,6 +29,9 @@ public class AllBeanTest {
 
     static class DiscountService{
         private final Map<String, DiscountPolicy> policyMap;
+        /* DiscountPolicy 타입의 객체만이 policyMap의 값으로 허용됩니다.
+        즉, policyMap은 문자열 키와 DiscountPolicy 타입의 객체를 매핑하는 맵이며,
+        다른 타입의 객체를 값으로 설정하려고 하면 컴파일 오류가 발생합니다.*/
         private final List<DiscountPolicy> policyList;
         //@Autowired 생략함
         public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policyList){
