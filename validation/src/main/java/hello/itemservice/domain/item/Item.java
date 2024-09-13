@@ -1,5 +1,4 @@
 package hello.itemservice.domain.item;
-
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
