@@ -16,7 +16,10 @@ public class ApiExceptionController {
         if (id.equals("ex")){
             throw new RuntimeException("잘못된 사용자");
             //500 html 반환 문제를 해결하려면 오류 페이지 컨트롤러도 JSON응답 할 수 있도록 수정해야한다.
+        }
 
+        if(id.equals("bad")){
+            throw new IllegalArgumentException("잘못된 입력 값");
         }
 
         return new MemberDto(id,"hello "+id);
