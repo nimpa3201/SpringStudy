@@ -14,28 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ApiExceptionV2Controller {
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResult IllegalExHandler(IllegalArgumentException e){
-        log.error("[exceptionHandler] ex" , e);
-        return new ErrorResult("BAD",e.getMessage());
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<ErrorResult> userExHandler(UserException e){
-        log.error("[exceptionHandler] ex", e);
-        ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
-        return new ResponseEntity<>(errorResult,HttpStatus.BAD_REQUEST);
-    }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 맨 상위 부모 클래스로 위에서 처리하지 못한 예외 전부 넘어옴
-    @ExceptionHandler
-    public ErrorResult exHandler(Exception e){
-        log.error("[exceptionHandler] ex", e);
-        return new ErrorResult("EX","내부오류");
-    }
-
-
 
     @GetMapping("/api2/members/{id}")
     public MemberDto getMember(@PathVariable("id") String id){
